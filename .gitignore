@@ -1,0 +1,16 @@
+# Gradle files and cache
+.gradle
+local.properties
+
+# Android Studio files
+.idea
+*.iml
+
+# Build folders
+/build
+/sample/build
+/samplewear/build
+/shoelace/build
+
+.DS_Store
+/captures

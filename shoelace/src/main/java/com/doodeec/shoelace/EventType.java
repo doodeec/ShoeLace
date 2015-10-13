@@ -9,6 +9,6 @@ import com.google.android.gms.wearable.DataEvent;
  *
  * @author Dusan Bartos
  */
-@IntDef({DataEvent.TYPE_CHANGED, DataEvent.TYPE_DELETED})
-public @interface DataEventType {
+@IntDef({DataEvent.TYPE_CHANGED, DataEvent.TYPE_DELETED, MessageEventType.TYPE_MESSAGE})
+public @interface EventType {
 }

@@ -20,5 +20,5 @@ import java.lang.annotation.Target;
 public @interface Lace {
     String value();
 
-    @DataEventType int type() default DataEvent.TYPE_CHANGED;
+    @EventType int type() default DataEvent.TYPE_CHANGED;
 }

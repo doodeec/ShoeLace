@@ -42,10 +42,6 @@ public class ShoeLace implements
         ResultCallback {
 
     private static final String TAG = ShoeLace.class.getSimpleName();
-    /**
-     * Request code for auto Google Play Services error resolution.
-     */
-    protected static final int REQUEST_CODE_RESOLUTION = 1;
 
     /**
      * Do not use this instance directly, always use thread-safe {@link #getInstance()} method

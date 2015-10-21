@@ -308,26 +308,24 @@ public class ShoeLace implements
 
         private static final String SER_TAG = WearableListener.class.getSimpleName();
 
-        private ShoeLace instance = sInstance;
-
         @Override
         public void onCreate() {
             super.onCreate();
             Log.i(SER_TAG, "onCreate");
 
-            instance.mGoogleApiClient = new GoogleApiClient.Builder(this)
+            getInstance().mGoogleApiClient = new GoogleApiClient.Builder(this)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
                     .addApi(Wearable.API)
                     .build();
-            instance.mGoogleApiClient.connect();
+            getInstance().mGoogleApiClient.connect();
         }
 
         @Override
         public void onConnected(Bundle bundle) {
             Log.i(SER_TAG, "onConnected");
-            Wearable.DataApi.addListener(instance.mGoogleApiClient, this);
-            Wearable.MessageApi.addListener(instance.mGoogleApiClient, this);
+            Wearable.DataApi.addListener(getInstance().mGoogleApiClient, this);
+            Wearable.MessageApi.addListener(getInstance().mGoogleApiClient, this);
         }
 
         @Override
@@ -352,23 +350,23 @@ public class ShoeLace implements
             // If there is an existing resolution error being displayed or a resolution
             // activity has started before, do nothing and wait for resolution
             // progress to be completed.
-            if (sInstance.mIsInResolution) {
+            if (getInstance().mIsInResolution) {
                 return;
             }
-            sInstance.mIsInResolution = true;
+            getInstance().mIsInResolution = true;
             retryConnecting();
         }
 
         @Override
         public void onDataChanged(DataEventBuffer dataEventBuffer) {
             Log.i(SER_TAG, "onDataChanged");
-            sInstance.onDataChanged(dataEventBuffer);
+            getInstance().onDataChanged(dataEventBuffer);
         }
 
         @Override
         public void onMessageReceived(MessageEvent messageEvent) {
             Log.i(SER_TAG, "onMessageReceived");
-            sInstance.onMessageReceived(messageEvent);
+            getInstance().onMessageReceived(messageEvent);
         }
 
         @Override
@@ -383,9 +381,9 @@ public class ShoeLace implements
         }
 
         private void retryConnecting() {
-            sInstance.mIsInResolution = false;
-            if (!sInstance.mGoogleApiClient.isConnecting()) {
-                sInstance.mGoogleApiClient.connect();
+            getInstance().mIsInResolution = false;
+            if (!getInstance().mGoogleApiClient.isConnecting()) {
+                getInstance().mGoogleApiClient.connect();
             }
         }
     }
